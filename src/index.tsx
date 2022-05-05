@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { NativeModules, Platform } from 'react-native';
 
 const LINKING_ERROR =
@@ -18,7 +17,41 @@ const FeedbackGenerator = NativeModules.FeedbackGenerator
       }
     );
 
-export function multiply(): void {
-  const { ImpactFeedbackStyleLight } = FeedbackGenerator.getConstants();
-  FeedbackGenerator.impactFeedback(ImpactFeedbackStyleLight);
+const {
+  ImpactFeedbackStyleLight,
+  ImpactFeedbackStyleMedium,
+  ImpactFeedbackStyleHeavy,
+  ImpactFeedbackStyleSoft,
+  ImpactFeedbackStyleRigid,
+  NotificationFeedbackStyleSuccess,
+  NotificationFeedbackStyleWarning,
+  NotificationFeedbackStyleError,
+} = FeedbackGenerator.getConstants();
+
+export enum ImpactFeedbackStyle {
+  Light = ImpactFeedbackStyleLight,
+  Medium = ImpactFeedbackStyleMedium,
+  Heavy = ImpactFeedbackStyleHeavy,
+  Soft = ImpactFeedbackStyleSoft,
+  Rigid = ImpactFeedbackStyleRigid,
+}
+
+export enum NotificationFeedbackStyle {
+  Success = NotificationFeedbackStyleSuccess,
+  Warning = NotificationFeedbackStyleWarning,
+  Error = NotificationFeedbackStyleError,
+}
+
+export function impactFeedback(impactFeedbackStyle: ImpactFeedbackStyle) {
+  FeedbackGenerator.impactFeedback(impactFeedbackStyle);
+}
+
+export function selectionFeedback() {
+  FeedbackGenerator.selectionFeedback();
+}
+
+export function notificationFeedback(
+  notificationFeedbackStyle: NotificationFeedbackStyle
+) {
+  FeedbackGenerator.notificationFeedback(notificationFeedbackStyle);
 }

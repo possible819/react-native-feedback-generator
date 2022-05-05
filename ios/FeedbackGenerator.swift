@@ -1,7 +1,7 @@
 import UIKit
 
-@objc(CalendarManager)
-class CalendarManager: NSObject {
+@objc(FeedbackGenerator)
+class FeedbackGenerator: NSObject {
     @objc static func requiresMainQueueSetup() -> Bool {
         return false
     }

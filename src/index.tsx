@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { NativeModules, Platform } from 'react-native';
 
 const LINKING_ERROR =
@@ -17,6 +18,7 @@ const FeedbackGenerator = NativeModules.FeedbackGenerator
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return FeedbackGenerator.multiply(a, b);
+export function multiply(): void {
+  const { ImpactFeedbackStyleLight } = FeedbackGenerator.getConstants();
+  FeedbackGenerator.impactFeedback(ImpactFeedbackStyleLight);
 }
